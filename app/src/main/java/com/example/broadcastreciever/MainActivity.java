@@ -13,16 +13,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
-    @Override
-    protected void onStart() {
-        super.onStart();
-        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        IntentFilter filter = new IntentFilter("com.example.EXAMPLE_ACTION");
         registerReceiver(exampleBroadcastReceiver, filter);
     }
     @Override
-    protected void onStop() {
-        super.onStop();
+    protected void onDestroy() {
+        super.onDestroy();
         unregisterReceiver(exampleBroadcastReceiver);
     }
 }
